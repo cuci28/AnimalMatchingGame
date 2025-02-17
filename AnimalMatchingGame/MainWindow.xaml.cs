@@ -37,22 +37,44 @@ namespace AnimalMatchingGame
             {
                 timer.Stop();
                 timeTextBlock.Text = timeTextBlock.Text + " - Play again?";
+
             }
         }
 
         private void SetUpGame()
         {
-            List<string> animalEmoji = new List<string>()
+            List<string> allEmoji = new List<string>()
             {
-                "🐙", "🐙",
-                "🐡", "🐡",
-                "🐘", "🐘",
-                "🐳", "🐳",
-                "🐪", "🐪",
-                "🦕", "🦕",
-                "🦘", "🦘",
-                "🦔", "🦔",
+                "🐙",
+                "🐡",
+                "🐘",
+                "🐳",
+                "🐪",
+                "🦕",
+                "🦘",
+                "🦔",
+                "🐢",
+                "🐄",
+                "🐈",
+                "🐿",
+                "🐕",
+                "🐊",
+                "🦍",
+                "🐇",
             };
+
+            List<string> animalEmoji = new List<string>();
+
+            Random randomEmoji = new Random();
+
+            for (int i = 0; i < 8; i++)
+            {
+                int index = randomEmoji.Next(allEmoji.Count);
+                animalEmoji.Add(allEmoji[index]);
+                animalEmoji.Add(allEmoji[index]);
+                allEmoji.RemoveAt(index);
+            };
+            
             Random random = new Random();
 
             foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
